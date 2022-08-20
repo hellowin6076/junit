@@ -1,0 +1,5 @@
+package site.bufgix.junitproject.domain;
+
+public class BookRepositoryTest {
+
+}
