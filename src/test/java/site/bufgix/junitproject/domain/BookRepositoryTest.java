@@ -1,10 +1,11 @@
 package site.bufgix.junitproject.domain;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 import java.util.List;
+import java.util.Optional;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -76,8 +77,18 @@ public class BookRepositoryTest {
         assertEquals(author, bookPS.getAuthor());
 
     }
-    // 책 수정
 
     // 책 삭제
+    @Test
+    public void delete_test() {
+        // given
+        Long id = 1L;
+
+        // when
+        bookRepository.deleteById(id);
+        // then
+        assertFalse(bookRepository.findById(id).isPresent());
+    }
+    // 책 수정
 
 }
