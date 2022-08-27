@@ -91,6 +91,39 @@ public class BookRepositoryTest {
         // then
         assertFalse(bookRepository.findById(id).isPresent());
     }
-    // 책 수정
 
+    // 1, junit5, 메타코딩이 들어가 있음
+    // 책 수정
+    @Sql("classpath:db/tableInit.sql")
+    @Test
+    public void update_book() {
+        // given
+        Long id = 1L;
+        String title = "updatetest";
+        String author = "update";
+        Book book = new Book(id, title, author);
+        // when
+        // bookRepository.findAll().stream()
+        // .forEach(booktmp -> {
+        // System.out.println(book.getId());
+        // System.out.println(book.getTitle());
+        // System.out.println(book.getAuthor());
+        // System.out.println("1.=========================================");
+        // });
+
+        Book bookPS = bookRepository.save(book);
+
+        // bookRepository.findAll().stream()
+        // .forEach(booktmp -> {
+        // System.out.println(book.getId());
+        // System.out.println(book.getTitle());
+        // System.out.println(book.getAuthor());
+        // System.out.println("2.=========================================");
+        // });
+
+        // then
+        assertEquals(id, bookPS.getId());
+        assertEquals(title, bookPS.getTitle());
+        assertEquals(author, bookPS.getAuthor());
+    }
 }
