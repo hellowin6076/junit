@@ -11,8 +11,8 @@ import lombok.RequiredArgsConstructor;
 import site.bufgix.junitproject.domain.Book;
 import site.bufgix.junitproject.domain.BookRepository;
 import site.bufgix.junitproject.util.MailSender;
-import site.bufgix.junitproject.web.dto.BookRespDto;
-import site.bufgix.junitproject.web.dto.BookSaveReqDto;
+import site.bufgix.junitproject.web.dto.request.BookSaveReqDto;
+import site.bufgix.junitproject.web.dto.response.BookRespDto;
 
 @RequiredArgsConstructor
 @Service

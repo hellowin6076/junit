@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import site.bufgix.junitproject.web.dto.BookRespDto;
+import site.bufgix.junitproject.web.dto.response.BookRespDto;
 
 @NoArgsConstructor
 @Getter

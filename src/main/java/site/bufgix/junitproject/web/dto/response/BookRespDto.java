@@ -1,4 +1,4 @@
-package site.bufgix.junitproject.web.dto;
+package site.bufgix.junitproject.web.dto.response;
 
 import lombok.Builder;
 import lombok.Getter;
