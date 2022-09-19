@@ -1,8 +1,10 @@
 package site.bufgix.junitproject.web.dto;
 
+import lombok.Getter;
 import lombok.Setter;
 import site.bufgix.junitproject.domain.Book;
 
+@Getter
 @Setter // Contorller에서 Setter가 호출되면서 Dto에 값이 채워짐.
 public class BookSaveReqDto {
     private String title;
