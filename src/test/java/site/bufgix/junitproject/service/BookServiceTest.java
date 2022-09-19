@@ -90,10 +90,10 @@ public class BookServiceTest {
     public void search_book_test() {
         // given
         Long id = 1L;
-        Book book = new Book(1L, "test book", "test author");
-        Optional<Book> bookOP = Optional.of(book);
 
         // stub
+        Book book = new Book(1L, "test book", "test author");
+        Optional<Book> bookOP = Optional.of(book);
         when(bookRepository.findById(1L)).thenReturn(bookOP);
 
         // when
@@ -103,5 +103,26 @@ public class BookServiceTest {
         assertThat(bookRespDto.getTitle()).isEqualTo(book.getTitle());
         assertThat(bookRespDto.getAuthor()).isEqualTo(book.getAuthor());
 
+    }
+
+    @Test
+    public void update_book_test() {
+        // given
+        Long id = 1L;
+        BookSaveReqDto dto = new BookSaveReqDto();
+        dto.setTitle("update title");
+        dto.setAuthor("update author");
+
+        // stub
+        Book book = new Book(1L, "test book", "test author");
+        Optional<Book> bookOP = Optional.of(book);
+        when(bookRepository.findById(1L)).thenReturn(bookOP);
+
+        // when
+        BookRespDto bookRespDto = bookService.update_book(id, dto);
+
+        // then
+        assertThat(bookRespDto.getTitle()).isEqualTo(dto.getTitle());
+        assertThat(bookRespDto.getAuthor()).isEqualTo(dto.getAuthor());
     }
 }
