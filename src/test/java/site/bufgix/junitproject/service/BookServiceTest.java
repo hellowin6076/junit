@@ -1,8 +1,7 @@
 package site.bufgix.junitproject.service;
 
-import org.assertj.core.api.WithAssertions;
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
@@ -14,16 +13,14 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import site.bufgix.junitproject.domain.Book;
 import site.bufgix.junitproject.domain.BookRepository;
 import site.bufgix.junitproject.util.MailSender;
-import site.bufgix.junitproject.util.MailSenderStub;
+
 import site.bufgix.junitproject.web.dto.request.BookSaveReqDto;
+import site.bufgix.junitproject.web.dto.response.BookListRespDto;
 import site.bufgix.junitproject.web.dto.response.BookRespDto;
 
 @ExtendWith(MockitoExtension.class) // 가짜 메모리 환경
@@ -70,7 +67,7 @@ public class BookServiceTest {
         when(bookRepository.findAll()).thenReturn(books);
 
         // when(실행)
-        List<BookRespDto> bookRespDtoList = bookService.list();
+        BookListRespDto bookListRespDto = bookService.list();
 
         // print
         // bookRespDtoList.stream().forEach((b) -> {
@@ -80,10 +77,10 @@ public class BookServiceTest {
         // });
 
         // then(검증)
-        assertThat(bookRespDtoList.get(0).getTitle()).isEqualTo("first title");
-        assertThat(bookRespDtoList.get(0).getAuthor()).isEqualTo("first author");
-        assertThat(bookRespDtoList.get(1).getTitle()).isEqualTo("second title");
-        assertThat(bookRespDtoList.get(1).getAuthor()).isEqualTo("second author");
+        assertThat(bookListRespDto.getItems().get(0).getTitle()).isEqualTo("first title");
+        assertThat(bookListRespDto.getItems().get(0).getAuthor()).isEqualTo("first author");
+        assertThat(bookListRespDto.getItems().get(1).getTitle()).isEqualTo("second title");
+        assertThat(bookListRespDto.getItems().get(1).getAuthor()).isEqualTo("second author");
     }
 
     @Test

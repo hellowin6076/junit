@@ -3,6 +3,29 @@ Host: localhost:8080
 content-type: application/json
 
 {
-    "title": "sample title",
-    "author": "sample author"
+    "title": "smple title222",
+    "author": "smaple author222"
 }
+
+####
+
+GET  /api/v1/book/ HTTP/1.1
+Host: localhost:8080
+content-type: application/json
+
+#####
+
+PUT   /api/v1/book/2 HTTP/1.1
+Host: localhost:8080
+content-type: application/json
+
+{
+    "title": "update title",
+    
+}
+#####
+
+DELETE /api/v1/book/1 HTTP/1.1
+Host: localhost:8080
+content-type: application/json
+

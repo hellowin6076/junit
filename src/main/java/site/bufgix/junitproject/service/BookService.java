@@ -12,6 +12,7 @@ import site.bufgix.junitproject.domain.Book;
 import site.bufgix.junitproject.domain.BookRepository;
 import site.bufgix.junitproject.util.MailSender;
 import site.bufgix.junitproject.web.dto.request.BookSaveReqDto;
+import site.bufgix.junitproject.web.dto.response.BookListRespDto;
 import site.bufgix.junitproject.web.dto.response.BookRespDto;
 
 @RequiredArgsConstructor
@@ -35,11 +36,14 @@ public class BookService {
     }
 
     // 책 목록보기
-    public List<BookRespDto> list() {
-        return bookRepository.findAll().stream()
+    public BookListRespDto list() {
+        List<BookRespDto> dtos = bookRepository.findAll().stream()
                 // .map((bookPS) -> new BookRespDto().toDto(bookPS))
                 .map(Book::toDto)
                 .collect(Collectors.toList());
+
+        BookListRespDto bookListRespDto = BookListRespDto.builder().bookList(dtos).build();
+        return bookListRespDto;
     }
 
     // 책 한건보기

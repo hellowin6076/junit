@@ -3,7 +3,6 @@ package site.bufgix.junitproject.web.dto.response;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import site.bufgix.junitproject.domain.Book;
 
 @NoArgsConstructor
 @Getter
