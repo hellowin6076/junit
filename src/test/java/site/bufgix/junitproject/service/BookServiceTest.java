@@ -14,6 +14,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.test.context.ActiveProfiles;
 
 import site.bufgix.junitproject.domain.Book;
 import site.bufgix.junitproject.domain.BookRepository;
@@ -23,6 +24,7 @@ import site.bufgix.junitproject.web.dto.request.BookSaveReqDto;
 import site.bufgix.junitproject.web.dto.response.BookListRespDto;
 import site.bufgix.junitproject.web.dto.response.BookRespDto;
 
+@ActiveProfiles("dev")
 @ExtendWith(MockitoExtension.class) // 가짜 메모리 환경
 public class BookServiceTest {
 
